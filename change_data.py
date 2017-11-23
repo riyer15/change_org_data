@@ -22,14 +22,14 @@ def call_ids_for_petition(index_range):
 	    dict_writer.writeheader()
 	    for pet in petitions:
 	    	for key in pet.keys():
-	    		print pet[key]
 	    		pet[key] = unicode(pet[key]).encode("utf-8")
 	    	dict_writer.writerow(pet)
 
-#index = int(raw_input("what number call is this"))
-for i in range (0, 6):
-	call_ids_for_petition(i)
-	time.sleep(60)
+index = int(raw_input("what number call is this"))
+call_ids_for_petition(index)
+#for i in range (0, 6):
+#	call_ids_for_petition(i)
+#	time.sleep(60)
 
 #print keys
 

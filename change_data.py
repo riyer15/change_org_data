@@ -17,19 +17,20 @@ def call_ids_for_petition(index_range):
 			if json_obj["petitions"]:
 				petitions.extend(json_obj["petitions"])
 	keys = ["status","goal","creator_name", "title","url", "overview","created_at","signature_count","end_at","organization_name", "letter_body", "petition_id", "creator_url", "image_url", "organization_url","targets"]
-	with open('petitions2.csv', 'a') as output_file:
+	with open('petitions3.csv', 'a') as output_file:
 	    dict_writer = csv.DictWriter(output_file, keys)
 	    dict_writer.writeheader()
 	    for pet in petitions:
-	    	for key in pet.keys():
-	    		pet[key] = unicode(pet[key]).encode("utf-8")
+	    	for key in keys:
+	    		if key in pet:
+	    			pet[key] = repr(pet[key]).encode("utf-8")
 	    	dict_writer.writerow(pet)
 
-index = int(raw_input("what number call is this"))
+index = int(input("what number call is this"))
 call_ids_for_petition(index)
-#for i in range (0, 6):
-#	call_ids_for_petition(i)
-#	time.sleep(60)
+#for i in range (10, 16):
+	#call_ids_for_petition(i)
+	#time.sleep(120)
 
 #print keys
 
